@@ -1,0 +1,27 @@
+<div
+  *ngIf="weathers"
+  class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <h3 class="panel-title">5-day forecast for {{weathers.city.name}}</h3>
+
+    </div>
+    <ul class="list-group">
+
+      <li
+        *ngFor="let weather of weathers.list"
+        class="list-group-item">
+
+        {{weather.dt * 1000 | date : 'fullDate'}}:
+        {{weather.weather[0].main}}
+        - Min: {{weather.temp.min}}
+        - Max: {{weather.temp.max}}
+
+        <img class="icon" src="https://www.angulartraining.com/images/weather/{{getWeatherIcon(weather.weather[0].main)}}.png">
+      </li>
+
+    </ul>
+  </div>
+  <a routerLink="/" class="btn btn-success" tabindex="0" id="mainPageBtn">&lt; Back to main page</a>
+</div>

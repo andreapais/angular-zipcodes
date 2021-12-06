@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <div class="well">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+
+      <h2>Enter a zipcode:</h2>
+
+      <input
+        formControlName="zipcode"
+        class="form-control" placeholder="Zipcode" type="text" id="addLocation">
+
+      <br>
+      <button
+        [disabled]="form.invalid"
+        type="submit"
+        class="btn btn-primary" id="addLocationBtn">
+        Add location
+      </button>
+    </form>
+
+  </div>
+
+  <app-weather-card
+    *ngFor="let zipCode of zipCodes"
+    [zipCode]="zipCode"
+    (remove)="removeZipCode($event)"></app-weather-card>
+
+</div>
